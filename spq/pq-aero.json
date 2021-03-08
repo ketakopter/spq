@@ -1,0 +1,338 @@
+{
+    "physical_quantities": [
+        {
+            "description": "distance",
+            "name": "Dist",
+            "main_unit": "m",
+            "conversions": [
+                {
+                    "from": "m",
+                    "to": "ft",
+                    "factor": 3.2808399
+                },
+                {
+                    "from": "km",
+                    "to": "m",
+                    "factor": 1000.0
+                },
+                {
+                    "from": "nm",
+                    "to": "m",
+                    "factor": 1852.0
+                },
+                {
+                    "from": "mi",
+                    "to": "m",
+                    "factor": 1609.344
+                },
+                {
+                    "from": "ft",
+                    "to": "in",
+                    "factor": 12.0
+                }
+            ]
+        },
+        {
+            "description": "density",
+            "name": "Dens",
+            "main_unit": "kgm3",
+            "conversions": []
+        },
+        {
+            "description": "velocity",
+            "name": "Vel",
+            "main_unit": "ms",
+            "conversions": [
+                {
+                    "from": "kt",
+                    "to": "ms",
+                    "factor": 0.51444
+                },
+                {
+                    "from": "ms",
+                    "to": "kmh",
+                    "factor": 3.6
+                },
+                {
+                    "from": "fps",
+                    "to": "fpm",
+                    "factor": 60.0
+                },
+                {
+                    "from": "mph",
+                    "to": "kmh",
+                    "factor": 1.609344
+                },
+                {
+                    "from": "ms",
+                    "to": "fps",
+                    "factor": 3.2808399
+                }
+            ]
+        },
+        {
+            "description": "volume",
+            "name": "Vol",
+            "main_unit": "m3",
+            "conversions": [
+                {
+                    "from": "dm3",
+                    "to": "l",
+                    "factor": 1.0
+                },
+                {
+                    "from": "l",
+                    "to": "ml",
+                    "factor": 1000.0
+                },
+                {
+                    "from": "l",
+                    "to": "dl",
+                    "factor": 10.0
+                },
+                {
+                    "from": "ft3",
+                    "to": "m3",
+                    "factor": 0.02831685
+                },
+                {
+                    "from": "ft3",
+                    "to": "cuft",
+                    "factor": 1.0
+                },
+                {
+                    "from": "l",
+                    "to": "cm3",
+                    "factor": 1000.0
+                },
+                {
+                    "from": "m3",
+                    "to": "l",
+                    "factor": 1000.0
+                },
+                {
+                    "from": "cc",
+                    "to": "cm3",
+                    "factor": 1.0
+                },
+                {
+                    "from": "gal",
+                    "to": "l",
+                    "factor": 3.785411784
+                },
+                {
+                    "from": "gal",
+                    "to": "usgal",
+                    "factor": 1.0
+                },
+                {
+                    "from": "gal",
+                    "to": "qt",
+                    "factor": 4.0
+                }
+            ]
+        },
+        {
+            "description": "temperature",
+            "name": "Temp",
+            "main_unit": "k",
+            "conversions": [
+                {
+                    "from": "c",
+                    "to": "f",
+                    "factor": 1.8,
+                    "origin": 32.0
+                },
+                {
+                    "from": "c",
+                    "to": "k",
+                    "factor": 1.0,
+                    "origin": 273.15
+                }
+            ]
+        },
+        {
+            "description": "pressure",
+            "name": "Press",
+            "main_unit": "pa",
+            "conversions": [
+                {
+                    "from": "inhg",
+                    "to": "pa",
+                    "factor": 3386.3753
+                },
+                {
+                    "from": "bar",
+                    "to": "pa",
+                    "factor": 100000.0
+                },
+                {
+                    "from": "atm",
+                    "to": "pa",
+                    "factor": 101325.0
+                },
+                {
+                    "from": "psi",
+                    "to": "pa",
+                    "factor": 6894.757293168
+                }
+            ]
+        },
+        {
+            "description": "power",
+            "name": "Power",
+            "main_unit": "w",
+            "conversions": [
+                {
+                    "from": "kw",
+                    "to": "w",
+                    "factor": 1000.0
+                },
+                {
+                    "from": "hp",
+                    "to": "w",
+                    "factor": 745.699872
+                }
+            ]
+        },
+        {
+            "description": "mass",
+            "name": "Mass",
+            "main_unit": "kg",
+            "conversions": [
+                {
+                    "from": "lb",
+                    "to": "kg",
+                    "factor": 0.45359237
+                },
+                {
+                    "from": "kg",
+                    "to": "g",
+                    "factor": 1000.0
+                }
+            ]
+        },
+        {
+            "description": "angle",
+            "name": "Ang",
+            "main_unit": "rad",
+            "conversions": [
+                {
+                    "from": "rad",
+                    "to": "deg",
+                    "factor": 57.29577951308232
+                }
+            ]
+        },
+        {
+            "description": "area",
+            "name": "Area",
+            "main_unit": "sqm",
+            "conversions": [
+                {
+                    "from": "sqm",
+                    "to": "sqft",
+                    "factor": 10.76391044943201
+                },
+                {
+                    "from": "sqkm",
+                    "to": "sqm",
+                    "factor": 1000000.0
+                },
+                {
+                    "from": "ha",
+                    "to": "sqm",
+                    "factor": 10000.0
+                },
+                {
+                    "from": "acre",
+                    "to": "sqft",
+                    "factor": 43560.0
+                }
+            ]
+        },
+        {
+            "description": "force",
+            "name": "Force",
+            "main_unit": "n",
+            "conversions": [
+                {
+                    "from": "n",
+                    "to": "lbf",
+                    "factor": 0.22481
+                }
+            ]
+        },
+        {
+            "description": "weight",
+            "name": "Weight",
+            "main_unit": "n",
+            "conversions": [
+                {
+                    "from": "n",
+                    "to": "lbf",
+                    "factor": 0.22481
+                },
+                {
+                    "from": "kg",
+                    "to": "n",
+                    "factor": 9.80665
+                },
+                {
+                    "from": "lb",
+                    "to": "kg",
+                    "factor": 0.45359237
+                },
+                {
+                    "from": "kg",
+                    "to": "g",
+                    "factor": 1000.0
+                }
+            ]
+        },
+        {
+            "description": "angular velocity",
+            "name": "Angv",
+            "main_unit": "rads",
+            "conversions": [
+                {
+                    "from": "rpm",
+                    "to": "rads",
+                    "factor": 0.10471975511965977
+                },
+                {
+                    "from": "rads",
+                    "to": "degs",
+                    "factor": 57.29577951308232
+                },
+                {
+                    "from": "rps",
+                    "to": "rpm",
+                    "factor": 60.0
+                }
+            ]
+        },
+        {
+            "description": "fuel flow (specific density 0.72)",
+            "name": "Flow",
+            "main_unit": "kgs",
+            "conversions": [
+                {
+                    "from": "kgs",
+                    "to": "kgh",
+                    "factor": 3600.0
+                },
+                {
+                    "from": "lph",
+                    "to": "kgh",
+                    "factor": 0.72
+                },
+                {
+                    "from": "gph",
+                    "to": "lph",
+                    "factor": 3.785411784
+                }
+            ]
+        }
+    ]
+}
