@@ -27,7 +27,7 @@
                 },
                 {
                     "from": "ft",
-                    "to": "in",
+                    "to": "inch",
                     "factor": 12.0
                 }
             ]
