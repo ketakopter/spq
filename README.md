@@ -8,8 +8,10 @@ SPQ is a small python package for working easily with physical quantities and di
 ```python
 >>> from spq import Dist
 >>> a = Dist.fromft(3.3)
->>> a.m
+>>> a
 1.0058399984711233
+>>> a.km
+0.0010058399984711232
 ```
 
 The idea is that a physical quantity is initialized from whatever unit, and it is converted to the main unit (e.g. meters for distance). You can use the variable to feed them into any function and perform calculations: this way the computations will be consistent. If you like, you can convert a variable to another unit for your output. Or you can use the package to perform quick unit conversions. It works with numpy arrays, too.
