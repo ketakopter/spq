@@ -1,0 +1,4 @@
+# Only to correctly load ipynbs with Binder.
+numpy
+matplotlib
+tabulate
