@@ -124,5 +124,7 @@ If you would like to try it live, try with the following Ipython notebook:
 
 * [Showcase](examples/Spq_showcase.ipynb) - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_showcase.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_showcase.ipynb)
 
+## Requirements
 
+SPQ works with Python 3 (tested with Python 3.6). The only needed dependency is Numpy (tested with Numpy 1.19).
 
