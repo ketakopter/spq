@@ -64,9 +64,9 @@
                     "factor": 1.609344
                 },
                 {
-                    "from": "ms",
-                    "to": "fps",
-                    "factor": 3.2808399
+                    "from": "fps",
+                    "to": "ms",
+                    "factor": 0.3048
                 }
             ]
         },
