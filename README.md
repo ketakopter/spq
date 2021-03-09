@@ -9,9 +9,9 @@ SPQ is a small python package for working easily with physical quantities and di
 >>> from spq import Dist
 >>> a = Dist.fromft(3.3)
 >>> a
-1.0058399984711233
+1.00584
 >>> a.km
-0.0010058399984711232
+0.00100584
 ```
 
 A physical quantity has factory methods to initialize the quantity from any of the defined units. The units are accessible as attributes of the quantity, resulting in a compact interface. No "convert_to", no strings needed - just ask for the value in the wanted unit directly.
@@ -82,13 +82,13 @@ The most basic stuff is converting scalars.
 ```python
 >>> a = Dist(34)
 >>> a.ft
-111.54855660000001
+111.54855643044618
 
 >>> b = Dist.fromft(15000)
 >>> b
-4571.99999305056
+4572.0
 >>> b.ft
-15000.0
+14999.999999999998
 ```
 
 It works with numpy arrays too, and the array is converted easily to the desired units:
