@@ -28,26 +28,40 @@ See more examples below.
 Currently there is no proper installation method. Clone the git repository to have the files in your system:
 
 ```
-git clone git://github.com/ketakopter/spq.git
+$ git clone git://github.com/ketakopter/spq.git
 ```
 
-Add the directory to the Python path and you can import the package as usual. 
-
-```python
-from spq import Dist, Vel
-```
-
-For quick use in Ipython sessions, you can import all from the package (you don't have to type all the quantities you are going to use and you don't have to type the prefix):
+Add the directory to the Python path and you can import all the symbols for interactive work. This will load all the defined physical quantities.
 
 ```python
 from spq import *
 ```
 
-### Choosing the physical quantities/units to be used
+Of course, you can also load the physical quantities explicitly: 
 
-The package loads the definitions of physical quantities and units from a json file. Currently only one file is supported, which loads typical units used in aerospace (ft, kt...) and the main units are the SI units (m, m/s...).
+```python
+from spq import Dist, Vel
+```
 
-You can specify a different file to be used by setting an environment variable previous to loading the package:
+### Available physical quantities/units
+
+The definition of physical quantities and units is fully specified in a json file. The best is to inspect [the file](spq/pq-aero.json). At runtime, you can also see the available units of a physical quantity with the `_units` attribute:
+
+```python
+>>> Dist._units
+['m', 'ft', 'km', 'nm', 'mi', 'inch']
+```
+
+If you want to know what is the "working" unit of a physical quantity, inspect the `_mainUnit` attribute:
+
+```python
+>>> Dist._mainUnit
+'m'
+```
+
+### Loading custom physical quantities/units
+
+You can specify physical quantities and units at runtime, but the easiest is to have the definitions in a json file. Currently the way of specifying a non-default file is to set the `SPQFILE` environment variable before loading the package:
 
 ```python
 # If not done prior to starting python.
@@ -75,6 +89,17 @@ The most basic stuff is converting scalars.
 15000.0
 ```
 
+It works with numpy arrays too, and the array is converted easily to the desired units:
+
+```python
+>>> import numpy as np
+>>> b = Dist.fromft(np.linspace(1,5,5))
+>>> print(b)
+[0.3048 0.6096 0.9144 1.2192 1.524 ]
+>>> print(b.km)
+[0.0003048 0.0006096 0.0009144 0.0012192 0.001524 ]
+```
+
 You can start variables from the units you want, and use the variables in functions that expect a consistent set of units, like SI:
 
 ```python
@@ -87,19 +112,8 @@ You can start variables from the units you want, and use the variables in functi
 >>> earthGravForce(m, r)
 64.22337018599708
 
->>> earthGravForce(10.43262, 8046720.0)
+>>> earthGravForce(10.43262, 8046720.0) # if we had input the values in kg and m directly. Same result, disregarding inaccuracies in the inputs.
 64.22334242237929
-```
-
-It works with numpy arrays too, and the array is converted easily to the desired units:
-
-```python
->>> import numpy as np
->>> b = Dist.fromft(np.linspace(1,5,5))
->>> print(b)
-[0.3048 0.6096 0.9144 1.2192 1.524 ]
->>> print(b.km)
-[0.0003048 0.0006096 0.0009144 0.0012192 0.001524 ]
 ```
 
 And many more functionalities to make working with units really easy. You can find more examples in the [examples](examples) directory.
