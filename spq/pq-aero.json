@@ -6,9 +6,9 @@
             "main_unit": "m",
             "conversions": [
                 {
-                    "from": "m",
-                    "to": "ft",
-                    "factor": 3.2808399
+                    "from": "ft",
+                    "to": "m",
+                    "factor": 0.3048
                 },
                 {
                     "from": "km",
