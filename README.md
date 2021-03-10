@@ -124,6 +124,14 @@ If you would like to try it live, try with the following Ipython notebook:
 
 * [Showcase](examples/Spq_showcase.ipynb) - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_showcase.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_showcase.ipynb)
 
+## What SPQ is, and what is not
+
+The goal of SPQ was to be able to quickly work with quantities and output results in different units, especially for interactive work. The variables derive from `float` and `np.ndarray` to be able to feed them to existing functions, and the value is internally stored in SI units (by default) in order to have consistent computations. The idea was to work with numerical values, no strings needed. Having the units as attributes makes it really easy to write the output in the wanted units or plot them, like `plt.plot(x.mi, y.mph)`.
+
+Also, the definition of physical quantities and units should be easy. The json file defining the defaults was easy to prepare and extending it is immediate.
+
+SPQ is **not** intended to be a full-fledged physical quantities library, like when you multiply a length by a force you get a torque (or an energy...). Doing that would need to define relationships between physical quantities, define how operators work, and it would over-complicate the library for the intended use. Doing computations with SPQ objects just results in floats or arrays; it's up to the user to initialize whatever physical quantity with the results.
+
 ## Requirements
 
 SPQ works with Python 3 (tested with Python 3.6). The only needed dependency is Numpy (tested with Numpy 1.19).
