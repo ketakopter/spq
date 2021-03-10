@@ -73,7 +73,7 @@ os.environ["SPQFILE"] = "/path/to/file"
 from spc import *
 ```
 
-To know more about how to define physical quantities and units, see below.
+To know more about defining physical quantities and units, see the [example notebook](examples/Spq_creation_examples.ipynb). You can also try it live: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_creation_examples.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_creation_examples.ipynb)
 
 ## Examples
 
