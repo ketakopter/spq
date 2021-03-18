@@ -14,7 +14,7 @@ SPQ is a small python package for working easily with physical quantities and di
 0.00100584
 ```
 
-A physical quantity has factory methods to initialize the quantity from any of the defined units. The units are accessible as attributes of the quantity, resulting in a compact interface. No "convert_to", no strings needed - just ask for the value in the wanted unit directly.
+A physical quantity has factory methods to initialize the quantity from any of the defined units, resulting in a functional interface. The units are accessible as attributes of the quantity, resulting in a compact interface. No "convert_to", no strings needed - just ask for the value in the wanted unit directly.
 
 Internally the value of the quantity is expressed in the main unit (e.g. _m_ for distance). You can use the variable to feed them into any function and perform calculations: this way the computations will be consistent. If you like, you can convert a variable to another unit for your output. Or you can use the package to perform quick unit conversions. It works with numpy arrays, too.
 
