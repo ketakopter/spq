@@ -63,7 +63,7 @@ def _buildLinearScalerFunctions(factor, origin=0.0):
     def b2a(b):
         return -(origin/factor) + (1./factor)*b
     return a2b, b2a
- 
+
 def _buildRecursiveClassmethod(funcList):
     def a2c(cls, a):
         x = a
@@ -71,7 +71,7 @@ def _buildRecursiveClassmethod(funcList):
             x = f(x)
         return cls(x)
     return a2c
- 
+
 def _buildRecursiveProperty(funcList):
     def a2c(self):
         x = self
@@ -79,48 +79,48 @@ def _buildRecursiveProperty(funcList):
             x = f(x)
         return x
     return a2c
- 
+
 def _buildFactorySetter(ScalarPq, unit):
   def fs(cls,a):
     return cls(np.asarray([getattr(ScalarPq,'from'+unit)(x) for x in np.asarray(a).flatten()]).reshape(np.asarray(a).shape))
   return fs
- 
+
 def _buildPropertySetter(unit):
   def prop(self):
     return np.asarray([getattr(x, unit) for x in self.flatten()]).reshape(self.shape)
   return prop
- 
+
 def _buildSupraFactory(ScalarPq, VectorPq, unit):
   def fs(cls, a):
     return getattr(VectorPq, 'from'+unit)(a) if isinstance(a, (list, tuple, np.ndarray)) else getattr(ScalarPq, 'from'+unit)(a)
   return fs
- 
- 
+
+
 def graphOfLinearScaling(factors):
     """Builds a graph based on linear scaling. Only the one-way factors need to be given, the
     reverse factors are constructed by reversing the linear scaling.
- 
+
     The scaling is done as y = A + B*x = origin + factor*x. The reverse scaling is done with
     x = -(origin/factor) + (1./factor)*y.
- 
+
     The factors are given as a list of tuples (the origin is optional and defaults to 0):
- 
+
     [ (from, to, factor), (from, to, factor, origin), ...]
- 
+
     e.g.:
- 
+
     [('km', 'm', 1.e3), ('m', 'ft', 3.28)]
- 
+
     The results is a graph which contains units as nodes and functions at the edges, such
     that if e.g. the edge from 'm' to 'ft' is used, the edge is a function that performs
     f(x): x*3.28.
- 
+
     An example for temperature:
- 
+
     [('c', 'f', 1.8,  32), ('c', 'k', 1.0, 273.15)]
- 
+
     """
- 
+
     graph = Gr()
     for f in factors:
         frm    = f[0]
@@ -128,10 +128,10 @@ def graphOfLinearScaling(factors):
         factor = f[2]
         origin = f[3] if len(f)==4 else 0.0
         frm2to, to2frm = _buildLinearScalerFunctions(factor, origin)
- 
+
         graph.addEdge(frm, to, frm2to)
         graph.addEdge(to, frm, to2frm)
- 
+
     return graph
 
 class _VectorPqBase(np.ndarray):
@@ -139,23 +139,23 @@ class _VectorPqBase(np.ndarray):
   Only used to identify VectorPqs for transforming them for ufuncs (see below).
   """
   pass
- 
+
 def createPq(graph, mainUnit, name=None):
   """
   graph is a graph with units at the nodes (strings) and conversion functions at the
   edges. The graph is supposed to be directed and strongly connected (no check is done).
   The edge functions are of the form `to = frm2to(frm)`.
- 
+
   There is a mainUnit (string), which should be present in the graph as one of the nodes.
- 
+
   This function returns a class (not an instance), which contains factory methods for
   all units, and properties for all units. All the needed convertions are performed by
   navigating through the graph.
- 
+
   """
- 
+
   units = graph.nodes
- 
+
   # Scalar pq
   class ScalarPq(float):
     pass
@@ -164,18 +164,18 @@ def createPq(graph, mainUnit, name=None):
     to  = mainUnit
     funcPath = graph.getEdges(graph.findPath(frm, to))
     frm2to = _buildRecursiveClassmethod(funcPath)
- 
+
     setattr(ScalarPq, 'from'+unit, classmethod(frm2to))
   for unit in [u for u in units if u != mainUnit]:
     frm = mainUnit
     to  = unit
     funcPath = graph.getEdges(graph.findPath(frm, to))
     frm2to = _buildRecursiveProperty(funcPath)
- 
+
     setattr(ScalarPq, unit, property(frm2to))
   setattr(ScalarPq, 'from'+mainUnit, classmethod(lambda cls,x: cls(x)))
   setattr(ScalarPq, mainUnit, property(lambda x:x))
- 
+
   # Vector pq
   class VectorPq(_VectorPqBase):
     def __new__(cls, a):
@@ -193,13 +193,13 @@ def createPq(graph, mainUnit, name=None):
       if out:
         kwargs['out'] = tuple(np.asarray(x, dtype=float) if isinstance(x, _VectorPqBase) else x for x in out)
       results = super(VectorPq, self).__array_ufunc__(ufunc, method, *inputs, **kwargs)
-      return results      
+      return results
   for unit in units:
     vecFactorySetter = _buildFactorySetter(ScalarPq, unit)
     setattr(VectorPq, 'from'+unit, classmethod(vecFactorySetter))
     vecPropertySetter = _buildPropertySetter(unit)
     setattr(VectorPq, unit, property(vecPropertySetter))
- 
+
   # Supra pq.
   class Pq(object):
     def __new__(cls, a):
@@ -211,9 +211,9 @@ def createPq(graph, mainUnit, name=None):
   for unit in units:
     supraFactory = _buildSupraFactory(ScalarPq, VectorPq, unit)
     setattr(Pq, 'from'+unit, classmethod(supraFactory))
- 
+
   return Pq
- 
+
 def createPqFromDict(pqDict):
   """
   Example of parseable dict:
@@ -230,10 +230,10 @@ def createPqFromDict(pqDict):
   """
   pqFactors = map(lambda c: tuple(c.get(n, 0.0) for n in ['from', 'to', 'factor', 'origin']), pqDict['conversions'])
   pqGraph   = graphOfLinearScaling(pqFactors)
- 
+
   mainUnit   = pqDict['main_unit']
   name       = pqDict['name']
- 
+
   return createPq(pqGraph, mainUnit, name)
 
 def createPqsFromJsonFile(filepath):
