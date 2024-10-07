@@ -4,9 +4,9 @@ import numpy as np
 
 from spq import Dist
 
-class TestDist(unittest.TestCase):
+class TestWorking(unittest.TestCase):
 
-    def test_dist(self):
+    def test_scalar(self):
 
         a = Dist(34)
 
@@ -14,7 +14,7 @@ class TestDist(unittest.TestCase):
         self.assertAlmostEqual(0.034, a.km)
         self.assertAlmostEqual(111.54855643, a.ft)
 
-    def test_dist_from(self):
+    def test_scalar_from(self):
 
         b = Dist.fromft(15000)
 
@@ -55,3 +55,13 @@ class TestDist(unittest.TestCase):
         np.testing.assert_array_almost_equal(np.sqrt(h), [1., 1.41421356, 1.73205081, 2., 2.23606798, 2.44948974, 2.64575131, 2.82842712, 3., ])
         np.testing.assert_array_almost_equal(h.km, [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009])
         np.testing.assert_array_almost_equal(np.exp(h.km), [1.0010005, 1.002002, 1.0030045, 1.00400801, 1.00501252, 1.00601804, 1.00702456, 1.00803209, 1.00904062])
+
+    def test_numpy_broadcasting(self):
+
+        i = Dist([[3,4],[8,9]])
+        j = np.array([4,5])
+        np.testing.assert_array_almost_equal(i*j, [[12., 20.], [32., 45.]])
+
+    def test_chain(self):
+
+        self.assertEqual(Dist.fromm(1000).km, 1.0)
