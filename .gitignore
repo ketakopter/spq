@@ -2,3 +2,4 @@
 *.egg-info
 .direnv/
 .envrc
+.venv
