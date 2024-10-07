@@ -46,3 +46,12 @@ class TestDist(unittest.TestCase):
         g_e = g[3]
         np.testing.assert_array_almost_equal(g_e, 1.2192)
         np.testing.assert_array_almost_equal(g_e.ft, 4.0)
+
+    def test_numpy_functions(self):
+
+        h = Dist(np.arange(1,10))
+
+        np.testing.assert_array_almost_equal(h, [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
+        np.testing.assert_array_almost_equal(np.sqrt(h), [1., 1.41421356, 1.73205081, 2., 2.23606798, 2.44948974, 2.64575131, 2.82842712, 3., ])
+        np.testing.assert_array_almost_equal(h.km, [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009])
+        np.testing.assert_array_almost_equal(np.exp(h.km), [1.0010005, 1.002002, 1.0030045, 1.00400801, 1.00501252, 1.00601804, 1.00702456, 1.00803209, 1.00904062])
