@@ -1,0 +1,46 @@
+{
+  "physical_quantities": [
+    {
+      "name": "Dist",
+      "main_unit": "pes",
+      "conversions": [
+        {
+          "from": "pes",
+          "to": "digitus",
+          "factor": 16.0
+        },
+        {
+          "from": "pes",
+          "to": "palmus",
+          "factor": 4.0
+        },
+        {
+          "from": "passus",
+          "to": "pes",
+          "factor": 5.0
+        },
+        {
+          "from": "stadium",
+          "to": "pes",
+          "factor": 625.0
+        }
+      ]
+    },
+    {
+      "name": "Vol",
+      "main_unit": "congius",
+      "conversions": [
+        {
+          "from": "congius",
+          "to": "quartarius",
+          "factor": 24.0
+        },
+        {
+          "from": "amphora",
+          "to": "congius",
+          "factor": 8.0
+        }
+      ]
+    }
+  ]
+}
