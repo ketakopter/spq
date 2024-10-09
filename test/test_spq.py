@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from spq import Dist
+from spq.aero import Dist
 
 class TestWorking(unittest.TestCase):
 
