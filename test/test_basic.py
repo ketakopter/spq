@@ -3,9 +3,8 @@ from pathlib import Path
 
 import numpy as np
 
-from spq.gr import Gr
+from spq.gr import Gr, graphOfLinearScaling
 from spq.spq import createPq, createPqFromDict, createPqsFromJsonFile
-from spq.spq import graphOfLinearScaling
 
 curr_dir = Path(__file__).parent
 res_dir = curr_dir.joinpath('resources')

@@ -53,16 +53,9 @@ also in any of the units (if not specified, the default is the main unit):
 
 """
 
-from .gr import Gr
+from .gr import graphOfLinearScaling
 import numpy as np
 import json
-
-def _buildLinearScalerFunctions(factor, origin=0.0):
-    def a2b(a):
-        return origin + factor*a
-    def b2a(b):
-        return -(origin/factor) + (1./factor)*b
-    return a2b, b2a
 
 def _buildRecursiveClassmethod(funcList):
     def a2c(cls, a):
@@ -95,44 +88,6 @@ def _buildSupraFactory(ScalarPq, VectorPq, unit):
     return getattr(VectorPq, 'from'+unit)(a) if isinstance(a, (list, tuple, np.ndarray)) else getattr(ScalarPq, 'from'+unit)(a)
   return fs
 
-
-def graphOfLinearScaling(factors):
-    """Builds a graph based on linear scaling. Only the one-way factors need to be given, the
-    reverse factors are constructed by reversing the linear scaling.
-
-    The scaling is done as y = A + B*x = origin + factor*x. The reverse scaling is done with
-    x = -(origin/factor) + (1./factor)*y.
-
-    The factors are given as a list of tuples (the origin is optional and defaults to 0):
-
-    [ (from, to, factor), (from, to, factor, origin), ...]
-
-    e.g.:
-
-    [('km', 'm', 1.e3), ('m', 'ft', 3.28)]
-
-    The results is a graph which contains units as nodes and functions at the edges, such
-    that if e.g. the edge from 'm' to 'ft' is used, the edge is a function that performs
-    f(x): x*3.28.
-
-    An example for temperature:
-
-    [('c', 'f', 1.8,  32), ('c', 'k', 1.0, 273.15)]
-
-    """
-
-    graph = Gr()
-    for f in factors:
-        frm    = f[0]
-        to     = f[1]
-        factor = f[2]
-        origin = f[3] if len(f)==4 else 0.0
-        frm2to, to2frm = _buildLinearScalerFunctions(factor, origin)
-
-        graph.addEdge(frm, to, frm2to)
-        graph.addEdge(to, frm, to2frm)
-
-    return graph
 
 class _VectorPqBase(np.ndarray):
   """
