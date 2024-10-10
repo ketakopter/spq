@@ -4,7 +4,7 @@ import numpy as np
 
 from spq.aero import Dist
 
-class TestWorking(unittest.TestCase):
+class TestInterface(unittest.TestCase):
 
     def test_scalar(self):
 

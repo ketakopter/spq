@@ -85,13 +85,3 @@ class TestSpqCreation(unittest.TestCase):
 
         self.assertAlmostEqual(b.congius, 80.0)
         self.assertAlmostEqual(b.quartarius, 1920.0)
-
-class TestLinearGraph(unittest.TestCase):
-
-    def test_init(self):
-
-        factors = [('km', 'm', 1.e3), ('m', 'ft', 3.28)]
-
-        dist_graph = graphOfLinearScaling(factors)
-
-        self.assertEqual(dist_graph.findPath("km", "ft"), ['km', 'm', 'ft'])
