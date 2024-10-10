@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from spq.aero import Dist
+from spq.spq.aero import Dist
 
 class TestInterface(unittest.TestCase):
 
