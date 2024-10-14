@@ -1,7 +1,7 @@
 import sys
 import os
 
-from spq.base.spq import createPqsFromJsonFile
+from spq.base.pq import createPqsFromJsonFile
 
 # Load magnitudes from external Json.
 pqFile = os.environ['SPQFILE']
