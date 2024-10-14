@@ -8,4 +8,4 @@ class TestImports(unittest.TestCase):
 
     def test_imports(self):
 
-        self.assertTrue(True)
+        self.assertAlmostEqual(Vel.fromkt(200), 102.888)
