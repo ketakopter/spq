@@ -1,7 +1,7 @@
 import sys
 import os
 
-from ..base.pq import createPqsFromJsonFile
+from spq.base.pq import createPqsFromJsonFile
 
 # Load magnitudes from external Json.
 pqFile = os.path.join(os.path.dirname(os.path.abspath(__file__)),'pq-aero.json')
