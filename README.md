@@ -92,7 +92,7 @@ If you would like to try it live, try with the following Ipython notebook:
 * [Showcase](examples/Spq_showcase.ipynb) - [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_showcase.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_showcase.ipynb)
 
 
-## Installation and loading
+## Installation
 
 Currently there is no proper installation method. Clone the git repository to have the files in your system:
 
@@ -100,23 +100,39 @@ Currently there is no proper installation method. Clone the git repository to ha
 $ git clone git://github.com/ketakopter/spq.git
 ```
 
-Add the directory to the Python path and you can import all the symbols for interactive work. This
-will load all the defined physical quantities.
+
+## Loading physical quantities
+
+SPQ is organized in modules that contain the definitions of units and physical quantities. Currently
+the *aero* module is available for users.
 
 ```python
-from spq import *
+from spq.spq.aero import Dist, Vel
 ```
-
-Of course, you can also load the physical quantities explicitly:
-
-```python
-from spq import Dist, Vel
-```
-
-### Available physical quantities/units
 
 The definition of physical quantities and units is fully specified in a json file. The best is to
-inspect [the file](spq/pq-aero.json). At runtime, you can also see the available units of a physical
+inspect [the file](spq/spq/pq-aero.json).
+
+The *environ* module lets one load the definitions from a file defined in the `SPQFILE` environment
+variable, following the same syntax as the file above.
+
+``` python
+import os
+os.environ['SPQFILE'] = '/path/to/file'
+from spq.spq.environ import Dist, Mass
+```
+
+### Loading custom physical quantities/units
+
+You can build your own module using the functionalities of the `spq.base` package. This lets you
+define units and conversions in a variety of ways: from a json file, dictionary of units, or a
+custom graph. The best is to inspect how the `spq.spq.aero` module loads the definitions, and check
+the [example notebook](examples/Spq_creation_examples.ipynb). You can also try it live: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_creation_examples.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_creation_examples.ipynb)
+
+
+### Available units
+
+At runtime, you can see the available units of a physical
 quantity with the `_units` attribute:
 
 ```python
@@ -131,23 +147,6 @@ If you want to know what is the "working" unit of a physical quantity, inspect t
 'm'
 ```
 
-### Loading custom physical quantities/units
-
-You can specify physical quantities and units at runtime, but the easiest is to have the definitions
-in a json file. Currently the way of specifying a non-default file is to set the `SPQFILE`
-environment variable before loading the package:
-
-```python
-# If not done prior to starting python.
-import os
-os.environ["SPQFILE"] = "/path/to/file"
-
-from spc import *
-```
-
-To know more about defining physical quantities and units, see the [example notebook](examples/Spq_creation_examples.ipynb). You can also try it live: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ketakopter/spq/HEAD?filepath=examples%2FSpq_creation_examples.ipynb) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ketakopter/spq/blob/main/examples/Spq_creation_examples.ipynb)
-
-
 ## What SPQ is, and what is not
 
 The goal of SPQ was to be able to quickly work with quantities and output results in different
@@ -160,6 +159,10 @@ or plot them, like `plt.plot(x.mi, y.mph)`.
 Also, the definition of physical quantities and units should be easy. The json file defining the
 defaults was easy to prepare and extending it is immediate.
 
+SPQ allows to have definitions for each application. It is **not** meant to be a library that
+handles all the imaginable units. The functionalities allow to have independent definitions, that
+are best tailored for each application.
+
 SPQ is **not** intended to be a full-fledged physical quantities library, like when you multiply a
 length by a force you get a torque (or an energy...). Doing that would need to define relationships
 between physical quantities, define how operators work, and it would over-complicate the library for
@@ -168,5 +171,4 @@ the user to initialize whatever physical quantity with the results.
 
 ## Requirements
 
-SPQ works with Python 3 (tested with Python 3.6). The only needed dependency is Numpy (tested with
-Numpy 1.19).
+SPQ works with Python 3 (tested with Python 3.7 and 3.12). The only needed dependency is Numpy.
