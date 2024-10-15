@@ -113,6 +113,8 @@ from spq.spq.aero import Dist, Vel
 The definition of physical quantities and units is fully specified in a json file. The best is to
 inspect [the file](spq/spq/pq-aero.json).
 
+### Loading custom physical quantities/units
+
 The *environ* module lets one load the definitions from a file defined in the `SPQFILE` environment
 variable, following the same syntax as the file above.
 
@@ -121,8 +123,6 @@ import os
 os.environ['SPQFILE'] = '/path/to/file'
 from spq.spq.environ import Dist, Mass
 ```
-
-### Loading custom physical quantities/units
 
 You can build your own module using the functionalities of the `spq.base` package. This lets you
 define units and conversions in a variety of ways: from a json file, dictionary of units, or a
