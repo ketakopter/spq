@@ -94,10 +94,18 @@ If you would like to try it live, try with the following Ipython notebook:
 
 ## Installation
 
-Currently there is no proper installation method. Clone the git repository to have the files in your system:
+You can install the package from PyPi:
 
+``` shell
+$ pip install spq
 ```
+
+Otherwise, clone the git repository to have the files in your system and install with pip:
+
+``` shell
 $ git clone git://github.com/ketakopter/spq.git
+$ cd spq
+$ pip install .
 ```
 
 
