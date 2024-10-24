@@ -331,6 +331,38 @@
                     "from": "gph",
                     "to": "lph",
                     "factor": 3.785411784
+                },
+                {
+                    "from": "kgh",
+                    "to": "grh",
+                    "factor": 1000
+                }
+            ]
+        },
+        {
+            "description": "diesel fuel flow (specific density 0.8)",
+            "name": "FlowD",
+            "main_unit": "kgs",
+            "conversions": [
+                {
+                    "from": "kgs",
+                    "to": "kgh",
+                    "factor": 3600.0
+                },
+                {
+                    "from": "lph",
+                    "to": "kgh",
+                    "factor": 0.8
+                },
+                {
+                    "from": "gph",
+                    "to": "lph",
+                    "factor": 3.785411784
+                },
+                {
+                    "from": "kgh",
+                    "to": "grh",
+                    "factor": 1000
                 }
             ]
         }

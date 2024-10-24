@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from spq.spq.aero import Dist, Dens, Vel, Vol, Temp, Press, Power, Mass, Ang, Area, Force, Weight, Angv, Flow
+from spq.spq.aero import Dist, Dens, Vel, Vol, Temp, Press, Power, Mass, Ang, Area, Force, Weight, Angv, Flow, FlowD
 
 class TestImports(unittest.TestCase):
 
