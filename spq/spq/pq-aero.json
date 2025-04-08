@@ -175,6 +175,11 @@
                     "from": "psi",
                     "to": "pa",
                     "factor": 6894.757293168
+                },
+                {
+                    "from": "psi",
+                    "to": "psf",
+                    "factor": 144.0
                 }
             ]
         },
@@ -248,6 +253,11 @@
                     "from": "acre",
                     "to": "sqft",
                     "factor": 43560.0
+                },
+                {
+                    "from": "sqft",
+                    "to": "sqin",
+                    "factor": 144.0
                 }
             ]
         },
