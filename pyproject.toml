@@ -1,6 +1,6 @@
 [project]
 name = "spq"
-version = "1.0.3"
+version = "1.0.4"
 description = "spq - simple physical quantities"
 authors = [
   { name="Hidden", email="ketakopter@gmail.com" },
